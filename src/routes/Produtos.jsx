@@ -2,13 +2,12 @@ import React from 'react'
 import { useEffect, useState } from 'react'
 import axios from 'axios';
 
-const Clientes = () => {
-
+const Produtos = () => {
     const [data, setData] = useState([]);
 
     useEffect(() => {
         const fetchData = async () => {
-            const result = await axios.get('http://localhost:8080/cliente/clienteAll');
+            const result = await axios.get('http://localhost:8080/produto/produtoAll');
             setData(result.data);
         };
         fetchData();
@@ -18,11 +17,11 @@ const Clientes = () => {
         <div>
             <ul>
                 {data.map(item => (
-                    <li key={item.idCliente}>{item.nome}</li>
+                    <li key={item.idProduto}>{item.idProduto} - {item.nome} - {item.qtdeEstoque}</li>
                 ))}
             </ul>
         </div>
     )
 }
 
-export default Clientes
+export default Produtos
